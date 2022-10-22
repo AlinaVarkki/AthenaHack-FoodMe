@@ -9,6 +9,8 @@ import {
     SafeAreaView,
     Dimensions
 } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
+
 
 import ColorPalette from "../assets/ColorPalette";
 import RoundProfileImage from "./RoundProfileImage";
@@ -18,8 +20,8 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
 
     const [buttonText, setButtonText] = useState("JOIN");
 
-    const [participants, setParticipants] = useState(images);
-    const [backgroundColor, setBackgroundColor] = useState(ColorPalette.darkgrey);
+    const [participants, setParticipants] = useState(people);
+    const [backgroundColor, setBackgroundColor] = useState(ColorPalette.lightOrange);
     const [buttonEnabled, setButtonEnabled] = useState(true);
     const [animationActive,setAnimationActive] = useState(false);
 
@@ -48,6 +50,36 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
         </View>
     )
 
+    const updateParticipant = () => {
+        let submission = {
+            activityName: title,
+            user: "Slavka"
+        }
+
+        if(buttonText == "JOIN") {
+            people.push(require(`../Resources/Avatars/Slavka.png`))
+            setParticipants(people)
+            setButtonText("LEAVE")
+
+            if (participants.length > 3) {
+                setBackgroundColor(ColorPalette.lightOrange)
+        //         setAnimationActive(true)
+        //         setTimeout(function () {
+        //             setAnimationActive(false)
+        //         }, 2000);
+
+            }
+            setButtonEnabled(false)
+        } else {
+            console.log("trying to remove");
+
+            people.pop()
+            setParticipants(people)
+            setButtonText("JOIN")
+            setBackgroundColor(ColorPalette.darkgrey)
+        }
+    }
+
     if(animationActive) {
 
     } else {
@@ -58,23 +90,33 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                 <View style={styles.content}>
                     <View style={styles.texts}>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
-                            <Text style={styles.textWhite}>{activity}</Text>
+                            <Text style={styles.title}>{title}</Text>
+       
+                        </View>
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
+                            <Text style={styles.filter}>{filter}</Text>
+                            <Icon name="location" size={10} color={ColorPalette.offwhite}/>
+                            <Text style={styles.location}>{distance} away</Text>
                         </View>
                         <Text style={styles.textWhiteLower}>{description}</Text>
                     </View>
 
                     <View style={styles.image}>
-                        <Image style={{height: width * 0.4, width: width * 0.4,}} source={photo}/>
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}> 
+                            <Text style={styles.host}>by {host}</Text>
+                            <RoundProfileImage image={people[0]} size={25}/>
+                        </View>
+                        <Image style={{height: width * 0.30, width: width * 0.45}} source={previewImage}/>
                     </View>
 
                 </View>
 
                 <View style={styles.bottomPart}>
 
-                    {(images.length !== 0) &&
+                    {(people.length !== 0) &&
                     <View style={styles.people}>
                         <FlatList
-                            data={images}
+                            data={people}
                             keyExtractor={image => image.toString()}
                             renderItem={profileRender}
                             horizontal={true}
@@ -107,35 +149,35 @@ const styles = StyleSheet.create({
     listing: {
         flex: 1,
         width: '100%',
-        height: 190,
+  //      height: 190,
+        paddingHorizontal: 20,
         borderRadius: 30,
-        borderWidth: 1,
-        borderColor: 'black',
         flexWrap: 'nowrap',
         justifyContent:'space-between',
         marginVertical:15,
-        // backgroundColor: ColorPalette.orange
+        backgroundColor: ColorPalette.lightOrange
 
     },
     content:{
         // justifyContent:'space-between'
         alignItems:'flex-end'
-
-
     },
     texts:{
-        width: '57%',
+        width: '50%',
         alignSelf:'flex-start',
         paddingTop: 20,
-        // backgroundColor: 'green'
+        paddingLeft: 20,
+        backgroundColor: 'green'
     },
     image:{
-        height: width*0.4,
-        width: width*0.4,
+        height: width*0.3,
+        width: width*0.3,
         position:'absolute',
-        marginTop: -40,
+        //marginTop: -20,
+        paddingRight: 20,
+        paddingTop: 20,
         paddingBottom:5,
-        // backgroundColor:'yellow'
+        backgroundColor:'red'
 
     },
     bottomPart:{
@@ -153,21 +195,36 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '66%',
         marginRight:5
-
     },
     button:{
     },
-    textWhite: {
-        paddingLeft: 20,
+    title: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 19
+        fontSize: 22,
     }, 
+    filter:{
+        backgroundColor: ColorPalette.offwhite,
+        fontWeight: 'bold',
+        paddingVertical: 2,
+        paddingHorizontal: 10,
+        color: ColorPalette.lightOrange,
+        borderRadius: 5,
+        fontSize: 13
+    },
+    location: {
+        color: ColorPalette.offwhite,
+        
+    },
+    host:{
+        fontWeight: 'bold',
+        color: ColorPalette.offwhite,
+        paddingRight: 5,
+    },
     textWhiteLower: {
-        paddingLeft: 20,
         paddingTop: 5,
         color: 'white',
-        fontSize: 16
+        fontSize: 16,
     },
     joinButton: {
         backgroundColor: '#FFF2D8',

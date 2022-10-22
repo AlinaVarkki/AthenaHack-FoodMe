@@ -4,14 +4,14 @@ import FeedCard from './FeedCard';
 
 const Feed = ({children}) => {
 
-    useEffect(() => {
-        loadListings();
-    }, []);
+    // useEffect(() => {
+    //     loadListings();
+    // }, []);
 
     const [listings, setListings] = useState([]);
 
     const photos = [
-        require('../Resources/Elements/pizza.png')
+        require('../Resources/Elements/Pizza.png')
     ]
 
     const getImages = (names) => {
@@ -19,12 +19,12 @@ const Feed = ({children}) => {
         let namesArr = names.split(" ")
         console.log("Hey" + names)
         for (let i = 0; i < namesArr.length; i++) {
-            if (namesArr[i] == 'Alina') images.push(require(`../resources/Avatars/Alina.png`))
-            if (namesArr[i] == 'Annie') images.push(require(`../resources/Avatars/Annie.png`))
-            if (namesArr[i] == 'Kathie') images.push(require(`../resources/Avatars/Kathie.png`))
-            if (namesArr[i] == 'Radina') images.push(require(`../resources/Avatars/Radina.png`))
-            if (namesArr[i] == 'Slavka') images.push(require(`../resources/Avatars/Slavka.png`))
-            if (namesArr[i] == 'Sophie') images.push(require(`../resources/Avatars/Sophie.png`))
+            if (namesArr[i] == 'Alina') images.push(require(`../Resources/Avatars/Alina.png`))
+            if (namesArr[i] == 'Annie') images.push(require(`../Resources/Avatars/Annie.png`))
+            if (namesArr[i] == 'Kathie') images.push(require(`../Resources/Avatars/Kathie.png`))
+            if (namesArr[i] == 'Radina') images.push(require(`../Resources/Avatars/Radina.png`))
+            if (namesArr[i] == 'Slavka') images.push(require(`../Resources/Avatars/Slavka.png`))
+            if (namesArr[i] == 'Sophie') images.push(require(`../Resources/Avatars/Sophie.png`))
         }
         return images
     }
@@ -33,13 +33,13 @@ const Feed = ({children}) => {
         <View style={{flex: 1}}>
 
         <FeedCard
-            title="Pasta"
+            title="Pissta"
             description="have some delicious food yum yum"
             filter="gluten"
             distance="100 m"
             host="Annie"
             previewImage={photos[0]}
-            people={getImages(["Alina","Kathie"])}
+            people={getImages("Alina Kathie")}
         />
 
         </View>
@@ -47,3 +47,5 @@ const Feed = ({children}) => {
 
 
 }
+
+export default Feed;

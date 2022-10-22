@@ -2,6 +2,8 @@ import React from "react";
 
 import { StyleSheet, View, Text } from "react-native";
 
+import Feed from "../Components/Feed";
+
 
 const FeedScreen = () => {
     return (

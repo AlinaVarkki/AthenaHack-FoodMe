@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     },
     main: {
         height: '87.5%',
-        paddingHorizontal: 20,
+        paddingHorizontal: 25,
     },
     bottom:{
         height: '12.5%',
