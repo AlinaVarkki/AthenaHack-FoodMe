@@ -91,7 +91,7 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                     <View style={styles.texts}>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
                             <Text style={styles.title}>{title}</Text>
-       
+
                         </View>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
                             <Text style={styles.filter}>{filter}</Text>
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         fontSize: 22,
-    }, 
+    },
     filter:{
         backgroundColor: ColorPalette.offwhite,
         fontWeight: 'bold',
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     },
     location: {
         color: ColorPalette.offwhite,
-        
+
     },
     host:{
      //   fontWeight: 'bold',
