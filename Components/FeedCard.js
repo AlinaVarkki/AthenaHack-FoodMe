@@ -16,7 +16,7 @@ import ColorPalette from "../assets/ColorPalette";
 import RoundProfileImage from "./RoundProfileImage";
 
 
-const FeedCard = ({title, description, filter, distance, host, previewImage, people=[]}) => {
+const FeedCard = ({title, description, filter, distance, host, previewImage, people=[], highlighted}) => {
 
     const [buttonText, setButtonText] = useState("JOIN");
 
@@ -95,18 +95,20 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                         </View>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
                             <Text style={styles.filter}>{filter}</Text>
-                            <Icon name="location" size={10} color={ColorPalette.offwhite}/>
-                            <Text style={styles.location}>{distance} away</Text>
+                            <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
+                                <Icon name="home" size={10} color={ColorPalette.offwhite}/>
+                                <Text style={styles.location}>  {distance} away</Text>
+                            </View>
                         </View>
                         <Text style={styles.textWhiteLower}>{description}</Text>
                     </View>
 
                     <View style={styles.image}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}> 
-                            <Text style={styles.host}>by {host}</Text>
+                            <Text style={styles.host}>by {host} </Text>
                             <RoundProfileImage image={people[0]} size={25}/>
                         </View>
-                        <Image style={{height: width * 0.30, width: width * 0.45}} source={previewImage}/>
+                        <Image style={{height: width * 0.33, width: width * 0.43, marginTop: -5}} source={previewImage}/>
                     </View>
 
                 </View>
@@ -122,7 +124,6 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                             horizontal={true}
 
                         />
-                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 27}}>/5</Text>
                     </View>
                     }
 
@@ -148,26 +149,27 @@ const {width} = Dimensions.get("screen");
 const styles = StyleSheet.create({
     listing: {
         flex: 1,
-        width: '100%',
+        width: '90%',
   //      height: 190,
         paddingHorizontal: 20,
         borderRadius: 30,
         flexWrap: 'nowrap',
         justifyContent:'space-between',
         marginVertical:15,
-        backgroundColor: ColorPalette.lightOrange
-
+        marginHorizontal:'5%',
+        backgroundColor: ColorPalette.lightOrange,
+        elevation: 10,
     },
     content:{
         // justifyContent:'space-between'
         alignItems:'flex-end'
     },
     texts:{
-        width: '50%',
+        width: '55%',
         alignSelf:'flex-start',
-        paddingTop: 20,
+        paddingTop: 10,
         paddingLeft: 20,
-        backgroundColor: 'green'
+      //  backgroundColor: 'green'
     },
     image:{
         height: width*0.3,
@@ -175,9 +177,9 @@ const styles = StyleSheet.create({
         position:'absolute',
         //marginTop: -20,
         paddingRight: 20,
-        paddingTop: 20,
+        paddingTop: 10,
         paddingBottom:5,
-        backgroundColor:'red'
+  //      backgroundColor:'red'
 
     },
     bottomPart:{
@@ -185,8 +187,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         flexDirection: 'row',
         justifyContent:'space-evenly',
-        alignItems:'baseline',
-        // backgroundColor:'red'
+        alignItems:'center',
+        width: '60%',
+     //   backgroundColor:'blue'
     },
     people:{
         // flex: 1,
@@ -217,7 +220,7 @@ const styles = StyleSheet.create({
         
     },
     host:{
-        fontWeight: 'bold',
+     //   fontWeight: 'bold',
         color: ColorPalette.offwhite,
         paddingRight: 5,
     },
@@ -227,20 +230,19 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     joinButton: {
-        backgroundColor: '#FFF2D8',
+        backgroundColor: ColorPalette.offwhite,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 10,
-        paddingVertical: 8,
+        paddingVertical: 4,
         paddingHorizontal: 12,
-        borderRadius: 20,
-        elevation: 3,
+        borderRadius: 10,
+        elevation: 5,
         margin: 5,
     },
     buttonText: {
         color: '#FFAC00',
         fontWeight: 'bold',
-        fontSize: 19
+        fontSize: 15
     }
 })
 

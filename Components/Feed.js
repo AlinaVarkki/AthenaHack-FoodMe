@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import FeedCard from './FeedCard';
+
+import foodList from '../homeScreenComponents/foodOffers'
 
 const Feed = ({children}) => {
 
@@ -14,10 +16,9 @@ const Feed = ({children}) => {
         require('../Resources/Elements/Pizza.png')
     ]
 
-    const getImages = (names) => {
+    const getImages = (namesArr) => {
         let images = []
-        let namesArr = names.split(" ")
-        console.log("Hey" + names)
+        console.log("Hey" + namesArr)
         for (let i = 0; i < namesArr.length; i++) {
             if (namesArr[i] == 'Alina') images.push(require(`../Resources/Avatars/Alina.png`))
             if (namesArr[i] == 'Annie') images.push(require(`../Resources/Avatars/Annie.png`))
@@ -29,23 +30,40 @@ const Feed = ({children}) => {
         return images
     }
 
-    return (
-        <View style={{flex: 1}}>
-
+    const listingRender = ({item}) => (
         <FeedCard
-            title="Pissta"
-            description="have some delicious food yum yum"
-            filter="gluten"
-            distance="100 m"
-            host="Annie"
+            title={item.food}
+            description={item.description}
+            filter={item.filter}
+            distance={item.distance}
+            host={item.name}
             previewImage={photos[0]}
-            people={getImages("Alina Kathie")}
+            people={getImages(item.people)}
+            highlighted={false}
         />
+    )
+
+    return (
+        <View style={styles.container}>
+            <FlatList showsVerticalScrollIndicator={false}
+                    data={foodList}
+                    keyExtractor={item => item.food}
+                    renderItem={listingRender}
+            />
 
         </View>
     );
 
 
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignContent: 'center'
+    }
+});
+
 
 export default Feed;
