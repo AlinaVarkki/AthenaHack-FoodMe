@@ -45,7 +45,6 @@ const MainScreen = ({route}) => {
                     <BottomMenuButton font="AntDesign" name="home" text="impact" callback={()=>changeChosen("ImpactScreen")} color={chosen === "ImpactScreen" ? ColorPalette.green : ColorPalette.darkgrey}/>
                     <BottomMenuButton font="AntDesign" name="home" text="feed" callback={()=>changeChosen("FeedScreen")} color={chosen === "FeedScreen" ? ColorPalette.green : ColorPalette.darkgrey}/>
                     <BottomMenuButton font="AntDesign" name="home" text="community" callback={()=>changeChosen("CommunityScreen")} color={chosen === "CommunityScreen" ? ColorPalette.green : ColorPalette.darkgrey}/>
-
                 </View>
             </View>
 
@@ -62,7 +61,7 @@ const styles = StyleSheet.create({
     },
     main: {
         height: '87.5%',
-        paddingHorizontal: 25,
+        paddingHorizontal: 0,
     },
     bottom:{
         height: '12.5%',
