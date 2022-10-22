@@ -6,7 +6,7 @@ import { StyleSheet, View, Text } from "react-native";
 const FeedScreen = () => {
     return (
     <View style={styles.container}>
-        <Text>Feed</Text>
+        <Feed/>
       </View>
       );
 };
@@ -15,9 +15,8 @@ const FeedScreen = () => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+      height: '100%',
+      width:'100%',
     },
   });
 
