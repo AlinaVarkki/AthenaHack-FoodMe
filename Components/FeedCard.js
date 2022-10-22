@@ -91,18 +91,18 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                     <View style={styles.texts}>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
                             <Text style={styles.title}>{title}</Text>
-       
+
                         </View>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
                             <Text style={styles.filter}>{filter}</Text>
-                            <Icon name="location" size={10} color={ColorPalette.offwhite}/>
+                            <Icon name="location" size={10} color={ColorPalette.white}/>
                             <Text style={styles.location}>{distance} away</Text>
                         </View>
                         <Text style={styles.textWhiteLower}>{description}</Text>
                     </View>
 
                     <View style={styles.image}>
-                        <View style={{flexDirection: 'row', alignItems: 'center'}}> 
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Text style={styles.host}>by {host}</Text>
                             <RoundProfileImage image={people[0]} size={25}/>
                         </View>
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         fontSize: 22,
-    }, 
+    },
     filter:{
         backgroundColor: ColorPalette.offwhite,
         fontWeight: 'bold',
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     },
     location: {
         color: ColorPalette.offwhite,
-        
+
     },
     host:{
         fontWeight: 'bold',

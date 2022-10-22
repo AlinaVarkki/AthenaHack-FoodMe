@@ -11,7 +11,7 @@ export default function OffersMap() {
     const [markers, setMarkers] = useState([]);
     const [identifiers, setIdentifiers] = useState();
 
-    let mapRef = React.useRef(null);
+    const mapRef = React.useRef();
     let _scrollView = React.createRef();
 
     useEffect(() => {
@@ -47,9 +47,9 @@ export default function OffersMap() {
         const {coordinates} = markers[index];
         console.log(coordinates)
 
-        mapRef.current.animateToRegion({
-            latitude: 30,
-            longitude: 30,
+        mapRef.current?.animateToRegion({
+            longitude: coordinates.longitude,
+            latitude: coordinates.latitude  - 0.006,
             latitudeDelta: 0.02,
             longitudeDelta: 0.02,
         }, 350)
@@ -66,23 +66,22 @@ export default function OffersMap() {
     }
 
 
+    let mapStyle = [
+        { "elementType": "geometry", "stylers": [ { "color": "#f5f5f5" } ] },
+        { "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] }];
+
+
     return (
-        <View>
+        <>
             <MapView
                 ref={mapRef}
-                onMapReady={() => {
-                    mapRef.current.fitToSuppliedMarkers(identifiers, {
-                        edgePadding:
-                            {
-                                top: 50,
-                                right: 50,
-                                bottom: 50,
-                                left: 50
-                            }
-                    })
-                }}
                 style={styles.map}
                 provider={PROVIDER_GOOGLE}
+                initialRegion={{
+                    latitude:51.4880,
+                    longitude:0.1500,
+                    latitudeDelta: 0.08,
+                    longitudeDelta: 0.08,}}
             >
                 {markers?.map((marker, index) => (
                         <Marker
@@ -145,7 +144,7 @@ export default function OffersMap() {
                     </View>
                 ))}
             </Animated.ScrollView>
-        </View>
+        </>
     );
 }
 
@@ -175,7 +174,7 @@ const styles = StyleSheet.create({
     },
     scrollView: {
         position: "absolute",
-        bottom: 260,
+        bottom: 20,
         left: 0,
         right: 0,
         paddingVertical: 10,
