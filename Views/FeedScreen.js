@@ -19,7 +19,7 @@ const FeedScreen = () => {
     const content = () => {
         switch (chosen) {
             case "ListView":
-                return (<OffersList/>);
+                return (<Feed/>);
             default:
                 return (<OffersMap/>);
         }
