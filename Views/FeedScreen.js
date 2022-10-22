@@ -28,8 +28,8 @@ const FeedScreen = () => {
     return (
         <>
             <View style={styles.topNav}>
-                    <UpperMenuButton name="home" text="List" callback={()=>changeChosen("ListView")} color={chosen === "ListView" ? ColorPalette.darkOrange : ColorPalette.darkgrey}/>
-                    <UpperMenuButton name="home" text="Map" callback={()=>changeChosen("MapView")} color={chosen === "MapView" ? ColorPalette.darkOrange : ColorPalette.darkgrey}/>
+                    <UpperMenuButton name="home" text="List" callback={()=>changeChosen("ListView")} color={chosen === "ListView" ? ColorPalette.orange : ColorPalette.darkgrey}/>
+                    <UpperMenuButton name="home" text="Map" callback={()=>changeChosen("MapView")} color={chosen === "MapView" ? ColorPalette.orange : ColorPalette.darkgrey}/>
             </View>
                 {content()}
         </>

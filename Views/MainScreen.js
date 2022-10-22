@@ -40,14 +40,13 @@ const MainScreen = ({route}) => {
             <View style={styles.main}>
                 {content()}
             </View>
-            <View style={styles.bottom}>
                 <View style={styles.row}>
-                    <BottomMenuButton font="AntDesign" name="home" text="impact" callback={()=>changeChosen("ImpactScreen")} color={chosen === "ImpactScreen" ? ColorPalette.green : ColorPalette.darkgrey}/>
-                    <BottomMenuButton font="AntDesign" name="home" text="feed" callback={()=>changeChosen("FeedScreen")} color={chosen === "FeedScreen" ? ColorPalette.green : ColorPalette.darkgrey}/>
-                    <BottomMenuButton font="AntDesign" name="home" text="community" callback={()=>changeChosen("CommunityScreen")} color={chosen === "CommunityScreen" ? ColorPalette.green : ColorPalette.darkgrey}/>
-                </View>
+            <View style={styles.bottom}>
+                    <BottomMenuButton font="AntDesign" name="home" text="impact" callback={()=>changeChosen("ImpactScreen")} color={chosen === "ImpactScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
+                    <BottomMenuButton font="AntDesign" name="home" text="feed" callback={()=>changeChosen("FeedScreen")} color={chosen === "FeedScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
+                    <BottomMenuButton font="AntDesign" name="home" text="community" callback={()=>changeChosen("CommunityScreen")} color={chosen === "CommunityScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
             </View>
-
+                </View>
         </SafeAreaView>
     )
 
@@ -64,17 +63,19 @@ const styles = StyleSheet.create({
         paddingHorizontal: 0,
     },
     bottom:{
-        height: '12.5%',
-        width: '100%',
+        backgroundColor: ColorPalette.orange,
+        borderRadius: 20,
+        width: '93%',
         alignItems: 'center',
-
-        borderTopWidth: 1,
-        borderTopColor: 'grey'
-    },
-    row:{
+        bottom: 10,
         flex:1,
         flexDirection: 'row',
         paddingTop: 5,
+    },
+    row:{
+        width: '100%',
+        alignItems: 'center',
+        height: '12.5%',
     },
 });
 

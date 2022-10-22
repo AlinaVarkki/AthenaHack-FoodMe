@@ -6,7 +6,7 @@ const UpperMenuButton = ({callback, text, color}) => {
     return (
         <TouchableWithoutFeedback onPress={callback}>
             <View style={styles.wordButton} >
-                <Text style={{color: color, fontSize: 30}}>{text}</Text>
+                <Text style={{color: color, fontSize: 30, fontWeight: "bold"}}>{text}</Text>
             </View>
         </TouchableWithoutFeedback>
     );
