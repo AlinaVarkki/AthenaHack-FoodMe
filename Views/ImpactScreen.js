@@ -3,6 +3,7 @@ import React from "react";
 import {View, Text, StyleSheet, ScrollView, Image} from "react-native";
 import ColorPalette from "../assets/ColorPalette";
 import YourImpactSection from "./YourImpactSection";
+import YourBadgesSection from "./YourBadgesSection";
 
 
 const ImpactScreen = () => {
@@ -35,6 +36,7 @@ const ImpactScreen = () => {
                     <View>
                     </View>
                 </View>
+                <YourBadgesSection/>
                 <YourImpactSection/>
             </View>
         </ScrollView>

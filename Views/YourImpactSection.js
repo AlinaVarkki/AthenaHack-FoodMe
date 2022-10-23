@@ -28,7 +28,8 @@ const YourImpactSection = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 20
+        paddingTop: 20,
+        paddingBottom: 30
     },
     impactText: {
         fontSize: 19,
