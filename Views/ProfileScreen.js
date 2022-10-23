@@ -7,13 +7,6 @@ import SettingsItem from "../Components/ProfileScreenComponents/SettingsItem";
 
 
 const ProfileScreen = () => {
-<<<<<<< HEAD
-  return (
-    <View style={styles.container}>
-        <Text>profile</Text>
-      </View>
-      );
-=======
     return (
         <ScrollView>
         <View style={styles.container}>
@@ -45,7 +38,6 @@ const ProfileScreen = () => {
         </View>
         </ScrollView>
     );
->>>>>>> 0d46b403a6566f07fc66a30e74cfb816f1d8d24c
 };
 
 
@@ -56,10 +48,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         margin: 30,
     },
-<<<<<<< HEAD
-  });
-    
-=======
     photoNameSection: {
         flex: 1,
         flexDirection: 'row',
@@ -120,6 +108,5 @@ const styles = StyleSheet.create({
         fontSize: 24,
     }
 });
->>>>>>> 0d46b403a6566f07fc66a30e74cfb816f1d8d24c
 
 export default ProfileScreen;

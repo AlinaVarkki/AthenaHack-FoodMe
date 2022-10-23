@@ -65,13 +65,8 @@ const styles = StyleSheet.create({
     screen: {
         height: '100%',
         flex: 1,
-<<<<<<< HEAD
-        paddingTop:10,
-        backgroundColor: 'white'
-=======
         paddingTop: 10,
         backgroundColor: ColorPalette.white
->>>>>>> 0d46b403a6566f07fc66a30e74cfb816f1d8d24c
     },
     main: {
         height: '87.5%',
