@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
         height: '100%',
         flex: 1,
         paddingTop:10,
+        backgroundColor: 'white'
     },
     main: {
         height: '87.5%',

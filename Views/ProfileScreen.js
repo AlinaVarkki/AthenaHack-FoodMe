@@ -4,9 +4,9 @@ import { StyleSheet, View, Text } from "react-native";
 
 
 const ProfileScreen = () => {
-    return (
+  return (
     <View style={styles.container}>
-        <Text>ProfileScreen</Text>
+        <Text>profile</Text>
       </View>
       );
 };
@@ -20,5 +20,6 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
   });
+    
 
 export default ProfileScreen;
