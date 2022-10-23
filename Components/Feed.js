@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, Text } from 'react-native';
 import FeedCard from './FeedCard';
 
 import foodList from '../homeScreenComponents/foodOffers'
 
-const Feed = ({children}) => {
+const Feed = ({title, joined}) => {
 
     // useEffect(() => {
     //     loadListings();
@@ -12,6 +12,13 @@ const Feed = ({children}) => {
 
     const [listings, setListings] = useState([]);
 
+    const [filteredListings, setFilteredListings] = useState([]);
+
+    useEffect(() => {
+        filterList();
+    }, []);
+
+    
     const photos = [
         require('../Resources/Elements/Pizza.png')
     ]
@@ -30,6 +37,16 @@ const Feed = ({children}) => {
         return images
     }
 
+    const filterList = () => {
+        let newList = []
+        for (let i = 0; i < foodList.length; i++) {
+            if (foodList[i].joined === joined) {
+                newList.push(foodList[i]);
+            }
+        }
+        setFilteredListings(newList);
+    }
+
     const listingRender = ({item}) => (
         <FeedCard
             title={item.food}
@@ -39,14 +56,16 @@ const Feed = ({children}) => {
             host={item.name}
             previewImage={photos[0]}
             people={getImages(item.people)}
-            highlighted={false}
+            highlight={joined}
         />
     )
 
     return (
         <View style={styles.container}>
+            <Text style={styles.heading}>{title}</Text>
+
             <FlatList showsVerticalScrollIndicator={false}
-                    data={foodList}
+                    data={filteredListings}
                     keyExtractor={item => item.food}
                     renderItem={listingRender}
             />
@@ -62,6 +81,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignContent: 'center'
+    },
+    heading: {
+        paddingLeft: '7.5%',
+        fontSize: 23,
+        paddingTop: 7
     }
 });
 

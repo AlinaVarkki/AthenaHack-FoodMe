@@ -16,20 +16,32 @@ import ColorPalette from "../assets/ColorPalette";
 import RoundProfileImage from "./RoundProfileImage";
 
 
-const FeedCard = ({title, description, filter, distance, host, previewImage, people=[], highlighted}) => {
+const FeedCard = ({title, description, filter, distance, host, previewImage, people=[], highlight}) => {
 
-    const [buttonText, setButtonText] = useState("JOIN");
+    const [buttonText, setButtonText] = useState(highlight ? "LEAVE" : "JOIN");
 
     const [participants, setParticipants] = useState(people);
-    const [backgroundColor, setBackgroundColor] = useState(ColorPalette.lightOrange);
+    const [backgroundColor, setBackgroundColor] = useState(highlight ? ColorPalette.lightOrange : ColorPalette.white);
+    const [textColor, setTextColor] = useState(highlight ? ColorPalette.offwhite : ColorPalette.darkness);
     const [buttonEnabled, setButtonEnabled] = useState(true);
     const [animationActive,setAnimationActive] = useState(false);
 
     useEffect(() => {
+        console.log(highlight)
+        if (highlight) {
+            setTextColor(ColorPalette.offwhite)
+            setBackgroundColor(ColorPalette.lightOrange)
+            setButtonText("LEAVE")
+        } else {
+            setTextColor(ColorPalette.darkness)
+            setBackgroundColor(ColorPalette.white)
+            setButtonText("JOIN")
+        }
+
         if (people.length===0) {
             setButtonText('JOIN')
         } else {
-            if (people.length > 4) {
+            if (people.length > 3) {
                 setButtonText('FULL')
                 setButtonEnabled(false)
             }
@@ -60,9 +72,12 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
             people.push(require(`../Resources/Avatars/Slavka.png`))
             setParticipants(people)
             setButtonText("LEAVE")
+            setBackgroundColor(ColorPalette.lightOrange)
+            setTextColor(ColorPalette.offwhite)
+
 
             if (participants.length > 3) {
-                setBackgroundColor(ColorPalette.lightOrange)
+             //   setBackgroundColor(ColorPalette.offwhite)
         //         setAnimationActive(true)
         //         setTimeout(function () {
         //             setAnimationActive(false)
@@ -76,7 +91,9 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
             people.pop()
             setParticipants(people)
             setButtonText("JOIN")
-            setBackgroundColor(ColorPalette.darkgrey)
+            setTextColor(ColorPalette.darkness)
+
+            setBackgroundColor(ColorPalette.white)
         }
     }
 
@@ -90,22 +107,22 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                 <View style={styles.content}>
                     <View style={styles.texts}>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
-                            <Text style={styles.title}>{title}</Text>
+                            <Text style={[{color: textColor}, styles.title]}>{title}</Text>
 
                         </View>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
                             <Text style={styles.filter}>{filter}</Text>
                             <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
-                                <Icon name="home" size={10} color={ColorPalette.offwhite}/>
-                                <Text style={styles.location}>  {distance} away</Text>
+                                <Icon name="home" size={10} style={{color: textColor}}/>
+                                <Text style={[{color: textColor}, styles.location]}>  {distance} away</Text>
                             </View>
                         </View>
-                        <Text style={styles.textWhiteLower}>{description}</Text>
+                        <Text style={[{color: textColor}, styles.textWhiteLower]}>{description}</Text>
                     </View>
 
                     <View style={styles.image}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}> 
-                            <Text style={styles.host}>by {host} </Text>
+                            <Text style={[{color: textColor}, styles.host]}>by {host} </Text>
                             <RoundProfileImage image={people[0]} size={25}/>
                         </View>
                         <Image style={{height: width * 0.33, width: width * 0.43, marginTop: -5}} source={previewImage}/>
@@ -157,7 +174,7 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         marginVertical:15,
         marginHorizontal:'5%',
-        backgroundColor: ColorPalette.lightOrange,
+   //     backgroundColor: ColorPalette.lightOrange,
         elevation: 10,
     },
     content:{
@@ -202,7 +219,7 @@ const styles = StyleSheet.create({
     button:{
     },
     title: {
-        color: 'white',
+   //     color: 'white',
         fontWeight: 'bold',
         fontSize: 22,
     },
@@ -216,17 +233,17 @@ const styles = StyleSheet.create({
         fontSize: 13
     },
     location: {
-        color: ColorPalette.offwhite,
+  //      color: ColorPalette.offwhite,
 
     },
     host:{
      //   fontWeight: 'bold',
-        color: ColorPalette.offwhite,
+   //     color: ColorPalette.offwhite,
         paddingRight: 5,
     },
     textWhiteLower: {
         paddingTop: 5,
-        color: 'white',
+ //       color: 'white',
         fontSize: 16,
     },
     joinButton: {

@@ -10,7 +10,7 @@ import MapView from "react-native-maps";
 import OffersList from "../homeScreenComponents/OffersList";
 import UpperMenuButton from "../Components/UpperMenuButton";
 
-import Feed from "../Components/Feed";
+import Feeds from "../Components/Feeds";
 
 
 const FeedScreen = () => {
@@ -19,7 +19,7 @@ const FeedScreen = () => {
     const content = () => {
         switch (chosen) {
             case "ListView":
-                return (<Feed/>);
+                return (<Feeds/>);
             default:
                 return (<OffersMap/>);
         }

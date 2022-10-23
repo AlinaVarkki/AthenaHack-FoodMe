@@ -6,6 +6,7 @@ let FOOD_OFFERS = [
         "filter":"vegetarian",
         "distance":"0.9",
         "people": ["Sophie", "Radina"],
+        "joined": true,
         "latitude": 51.5200,
         "longitude": 0.1454
     },
@@ -16,6 +17,7 @@ let FOOD_OFFERS = [
         "filter":"gluten free",
         "distance":"1.2",
         "people":["Radina", "Alina", "Kathie"],
+        "joined": false,
         "latitude": 51.4805,
         "longitude": 0.1430
     },
@@ -26,6 +28,7 @@ let FOOD_OFFERS = [
         "filter":"vegan",
         "distance":"0.1",
         "people":["Alina"],
+        "joined": false,
         "latitude": 51.5010,
         "longitude": 0.1730
     },
@@ -36,6 +39,7 @@ let FOOD_OFFERS = [
         "filter":"pescaterian",
         "distance":"0.25",
         "people":["Kathie", "Annie"],
+        "joined": false,
         "latitude": 51.5030,
         "longitude": 0.1730
     }
