@@ -9,7 +9,7 @@ import {
     SafeAreaView,
     Dimensions
 } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 import ColorPalette from "../assets/ColorPalette";
@@ -47,8 +47,8 @@ const FeedCardAction = ({title, description, filter, distance, host, previewImag
                             <Text style={styles.filter}>{filter}</Text>
                             {!hosted &&
                             <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
-                                <Icon name="home" size={10} style={{color: textColor}}/>
-                                <Text style={[{color: textColor}, styles.location]}>  {distance} away</Text>
+                                <Icon name="location" size={18} style={{color: ColorPalette.orange}}/>
+                                <Text style={[{color: textColor}, styles.location]}> {distance} away</Text>
                             </View> }
                         </View>
                         {!hosted &&

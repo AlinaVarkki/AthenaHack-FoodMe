@@ -49,11 +49,11 @@ const MainScreen = ({route}) => {
             </View>
                 <View style={styles.row}>
             <View style={styles.bottom}>
-                    <BottomMenuButton font="AntDesign" name="home" text="inspire" callback={()=>changeChosen("CommunityScreen")} color={chosen === "CommunityScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
-                    <BottomMenuButton font="AntDesign" name="home" text="action" callback={()=>changeChosen("ActionScreen")} color={chosen === "ActionScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
-                    <BottomMenuButton font="AntDesign" name="home" text="feed" callback={()=>changeChosen("FeedScreen")} color={chosen === "FeedScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
-                    <BottomMenuButton font="AntDesign" name="home" text="impact" callback={()=>changeChosen("ImpactScreen")} color={chosen === "ImpactScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
-                    <BottomMenuButton font="AntDesign" name="home" text="profile" callback={()=>changeChosen("ProfileScreen")} color={chosen === "ProfileScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
+                    <BottomMenuButton font="Ionicons" text="inspire" callback={()=>changeChosen("CommunityScreen")} name={chosen === "CommunityScreen" ? "md-people-circle-sharp" : "md-people-circle-outline"}/>
+                    <BottomMenuButton font="Ionicons" text="action" callback={()=>changeChosen("ActionScreen")} name={chosen === "ActionScreen" ? "heart" : "heart-outline"}/>
+                    <BottomMenuButton font="Ionicons" text="feed" callback={()=>changeChosen("FeedScreen")} name={chosen === "FeedScreen" ? "home" : "home-outline"}/>
+                    <BottomMenuButton font="Ionicons" text="impact" callback={()=>changeChosen("ImpactScreen")} name={chosen === "ImpactScreen" ? "rocket-sharp" : "rocket-outline"}/>
+                    <BottomMenuButton font="AntDesign" text="profile" callback={()=>changeChosen("ProfileScreen")} name={chosen === "ProfileScreen" ? "smile-circle" : "smileo"}/>
             </View>
                 </View>
         </SafeAreaView>
@@ -74,18 +74,19 @@ const styles = StyleSheet.create({
     },
     bottom:{
         backgroundColor: ColorPalette.orange,
-        borderRadius: 20,
+        borderRadius: 25,
         width: '93%',
         alignItems: 'center',
         bottom: 10,
         flex:1,
         flexDirection: 'row',
         paddingTop: 5,
+        elevation: 5
     },
     row:{
         width: '100%',
         alignItems: 'center',
-        height: '12.5%',
+        height: '10%',
     },
 });
 
