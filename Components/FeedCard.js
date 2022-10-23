@@ -7,12 +7,15 @@ import {
     Pressable,
     Image,
     SafeAreaView,
-    Dimensions
+    Dimensions,
+    TouchableWithoutFeedback
 } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from "@react-navigation/native";
 
 
 import ColorPalette from "../assets/ColorPalette";
+import ListingScreen from '../Views/ListingScreen';
 import RoundProfileImage from "./RoundProfileImage";
 
 
@@ -25,6 +28,8 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
     const [textColor, setTextColor] = useState(highlight ? ColorPalette.offwhite : ColorPalette.darkness);
     const [buttonEnabled, setButtonEnabled] = useState(true);
     const [animationActive,setAnimationActive] = useState(false);
+
+    const navigation = useNavigation();
 
     useEffect(() => {
         console.log(highlight)
@@ -97,11 +102,24 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
         }
     }
 
+    const openListing = () => {
+        navigation.navigate("ListingScreen", {
+            title: title, 
+            description: description,
+            filter: filter, 
+            distance: distance,
+            host:host, 
+        previewImage:previewImage, 
+        people:participants
+        })
+    }
+
     if(animationActive) {
 
     } else {
 
         return (
+            <Pressable onPress={openListing}>
             <View style={[{backgroundColor: backgroundColor}, styles.listing]}>
 
                 <View style={styles.content}>
@@ -113,8 +131,8 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                         <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
                             <Text style={styles.filter}>{filter}</Text>
                             <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
-                                <Icon name="home" size={10} style={{color: textColor}}/>
-                                <Text style={[{color: textColor}, styles.location]}>  {distance} away</Text>
+                                <Icon name="location-sharp" size={18} style={{color: highlight ? ColorPalette.offwhite : ColorPalette.orange}}/>
+                                <Text style={[{color: textColor}, styles.location]}> {distance} away</Text>
                             </View>
                         </View>
                         <Text style={[{color: textColor}, styles.textWhiteLower]}>{description}</Text>
@@ -135,10 +153,10 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                     {(people.length !== 0) &&
                     <View style={styles.people}>
                         <FlatList
+                            horizontal={true}
                             data={people}
                             keyExtractor={image => image.toString()}
                             renderItem={profileRender}
-                            horizontal={true}
 
                         />
                     </View>
@@ -150,6 +168,7 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                     </View>
                 </View>
             </View>
+            </Pressable>
 
         );
 
@@ -202,12 +221,12 @@ const styles = StyleSheet.create({
         justifyContent:'space-evenly',
         alignItems:'center',
         width: '60%',
-     //   backgroundColor:'blue'
+   //     backgroundColor:'blue'
     },
     people:{
-        // flex: 1,
+     //   flex: 1,
         justifyContent:'flex-start',
-        // backgroundColor:'green',
+ //       backgroundColor:'green',
         flexDirection: 'row',
         width: '66%',
         marginRight:5

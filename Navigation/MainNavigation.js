@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import MainScreen from "../Views/MainScreen";
 import ProfileScreen from "../Views/ProfileScreen";
 import ImpactScreen from "../Views/ImpactScreen";
+import ListingScreen from "../Views/ListingScreen";
 
 const Stack = createStackNavigator();
 
@@ -16,8 +17,15 @@ const MainNavigation = () => (
                 headerShown: false
             }}>
             <Stack.Screen name="app name" component={MainScreen} initialParams={{screen:0}}/>
-            {/* <Stack.Screen name="ProfileScreen" component={ProfileScreen}/>
-            <Stack.Screen name="ImpactScreen" component={ImpactScreen}/> */}
+            <Stack.Screen name="ListingScreen" component={ListingScreen} initialParams={   {
+        "title":"Huel",
+        "description":"Shake it (the protein shake) till you make it.",
+        "filter":"vegan",
+        "distance":0.1,
+        "host":"Alina",
+        "previewImage":require('../Resources/Elements/Pizza.png'),
+        "people":["Alina"]
+            }}/>
         </Stack.Navigator>
     </NavigationContainer>
 
