@@ -42,6 +42,17 @@ let FOOD_OFFERS = [
         "joined": false,
         "latitude": 51.5030,
         "longitude": 0.1730
+    },
+    {
+        "name":"Slavka",
+        "food":"Soup",
+        "description":"A heart and soul warming tomato soup.",
+        "filter":"vegan",
+        "distance":"0.33",
+        "people":["Slavka","Radina", "Sophie"],
+        "joined": false,
+        "latitude": 51.5030,
+        "longitude": 0.1730
     }
 ];
 

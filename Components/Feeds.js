@@ -2,19 +2,19 @@ import React from 'react';
 import Feed from './Feed';
 import {StyleSheet, View, FlatList} from 'react-native';
 
-const lists = [
-    {title: "Your dining experiences", joined: true},
-    {title: "Join a dinner", joined: false}
-]
-
-const listingRender = ({item}) => (
-    <Feed
-    title={item.title}
-    joined={item.joined}
-    />
-)
-
 const Feeds = ({children}) => {
+
+    const lists = [
+        {title: "Your dining experiences", joined: true},
+        {title: "Join a dinner", joined: false}
+    ]
+
+    const listingRender = ({item}) => (
+        <Feed
+        title={item.title}
+        joined={item.joined}
+        />
+    )
 
     return (
         <View style={styles.container}>

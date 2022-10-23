@@ -16,7 +16,7 @@ const BottomMenuButton = ({name, callback, text, color, font}) => {
 
 const styles = StyleSheet.create({
     icon: {
-        width:'33%',
+        width:'20%',
         justifyContent:'center',
         alignItems:'center',
     }

@@ -9,6 +9,7 @@ import BottomMenuButton from "../Components/BottomMenuButton";
 import ColorPalette from "../assets/ColorPalette.js"
 
 import { SafeAreaView, View, StyleSheet, StatusBar } from "react-native";
+import ActionScreen from "./ActionScreen";
 
 const MainScreen = ({route}) => {
 
@@ -29,6 +30,12 @@ const MainScreen = ({route}) => {
             case "ImpactScreen":
                 return (<ImpactScreen/>);
 
+            case "ActionScreen":
+                return (<ActionScreen/>);
+                
+            case "ProfileScreen": 
+                return (<ProfileScreen/>);
+                
             default:
                 return (<FeedScreen/>);
         }
@@ -42,9 +49,11 @@ const MainScreen = ({route}) => {
             </View>
                 <View style={styles.row}>
             <View style={styles.bottom}>
-                    <BottomMenuButton font="AntDesign" name="home" text="impact" callback={()=>changeChosen("ImpactScreen")} color={chosen === "ImpactScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
+                    <BottomMenuButton font="AntDesign" name="home" text="inspire" callback={()=>changeChosen("CommunityScreen")} color={chosen === "CommunityScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
+                    <BottomMenuButton font="AntDesign" name="home" text="action" callback={()=>changeChosen("ActionScreen")} color={chosen === "ActionScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
                     <BottomMenuButton font="AntDesign" name="home" text="feed" callback={()=>changeChosen("FeedScreen")} color={chosen === "FeedScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
-                    <BottomMenuButton font="AntDesign" name="home" text="community" callback={()=>changeChosen("CommunityScreen")} color={chosen === "CommunityScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
+                    <BottomMenuButton font="AntDesign" name="home" text="impact" callback={()=>changeChosen("ImpactScreen")} color={chosen === "ImpactScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
+                    <BottomMenuButton font="AntDesign" name="home" text="profile" callback={()=>changeChosen("ProfileScreen")} color={chosen === "ProfileScreen" ? ColorPalette.white : ColorPalette.darkgrey}/>
             </View>
                 </View>
         </SafeAreaView>

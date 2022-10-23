@@ -1,21 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import { View, StyleSheet, FlatList, Text } from 'react-native';
-import FeedCard from './FeedCard';
+import FeedCardAction from './FeedCardAction';
 
-import foodList from '../homeScreenComponents/foodOffers'
+import foodList from '../homeScreenComponents/foodOffers';
+import pastDinnersList from '../homeScreenComponents/foodOffersPast'
 
-const Feed = ({title, joined}) => {
 
-    // useEffect(() => {
-    //     loadListings();
-    // }, []);
+const FeedAction = ({title, hosted, inProgress}) => {
 
     const [listings, setListings] = useState([]);
 
-    const [filteredListings, setFilteredListings] = useState([]);
+    const [yourCurrentExperiences, setYourCurrentExperiences] = useState([]);
+    const [yourPastExperiences, setYourPastExperiences] = useState([]);
+    const [attendedExperiences, setAttendedExperiences] = useState([]);
+
+
 
     useEffect(() => {
-        filterList();
+        setCurrentExp();
+        setPastExp();
+        console.log(yourCurrentExperiences);
     }, []);
 
     
@@ -37,18 +41,33 @@ const Feed = ({title, joined}) => {
         return images
     }
 
-    const filterList = () => {
-        let newList = []
+    const setCurrentExp = () => {
+        let newList = [];
         for (let i = 0; i < foodList.length; i++) {
-            if (foodList[i].joined === joined) {
+            if (foodList[i].name == "Slavka") {
                 newList.push(foodList[i]);
             }
         }
-        setFilteredListings(newList);
+        setYourCurrentExperiences(newList);
     }
 
+    const setPastExp = () => {
+        let hosted = [];
+        let attended = [];
+        for (let i = 0; i < pastDinnersList.length; i++) {
+            if (pastDinnersList[i].name == "Slavka") {
+                hosted.push(pastDinnersList[i]);
+            } else {
+                attended.push(pastDinnersList[i]);
+            }
+        }
+        setYourPastExperiences(hosted);
+        setAttendedExperiences(attended);
+    }
+
+
     const listingRender = ({item}) => (
-        <FeedCard
+        <FeedCardAction
             title={item.food}
             description={item.description}
             filter={item.filter}
@@ -56,16 +75,19 @@ const Feed = ({title, joined}) => {
             host={item.name}
             previewImage={photos[0]}
             people={getImages(item.people)}
-            highlight={joined}
+            hosted={hosted}
+            inProgress={inProgress}
         />
     )
 
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>{title}</Text>
+            {hosted &&
+                        <Text style={styles.heading}>{title}</Text>
+                    }
 
             <FlatList showsVerticalScrollIndicator={false}
-                    data={filteredListings}
+                    data={hosted ? (inProgress ? yourCurrentExperiences : yourPastExperiences) : (attendedExperiences)}
                     keyExtractor={item => item.food}
                     renderItem={listingRender}
             />
@@ -91,4 +113,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Feed;
+export default FeedAction;
