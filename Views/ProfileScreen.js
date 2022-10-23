@@ -1,12 +1,14 @@
 import React from "react";
 
-import {StyleSheet, View, Text, Image} from "react-native";
+import {StyleSheet, View, Text, Image, ScrollView} from "react-native";
 import ColorPalette from "../assets/ColorPalette";
 import Icon from "react-native-vector-icons/Feather";
+import SettingsItem from "../Components/ProfileScreenComponents/SettingsItem";
 
 
 const ProfileScreen = () => {
     return (
+        <ScrollView>
         <View style={styles.container}>
             <View style={styles.photoNameSection}>
                 <Image style={styles.profileImage} source={require(`../Resources/Avatars/Slavka.png`)}/>
@@ -27,9 +29,14 @@ const ProfileScreen = () => {
                 </Text>
             </View>
             <View style={styles.settingsSection}>
-
+                <Text style={styles.settingsText}>Settings</Text>
+                <SettingsItem name={"Notifications"} icon={"notifications-outline"} showToggle={true}/>
+                <SettingsItem name={"Location"} icon={"location-outline"}/>
+                <SettingsItem name={"Payments and payouts"} icon={"ios-card-outline"}/>
+                <SettingsItem name={"Privacy and sharing"} icon={"ios-people-outline"}/>
             </View>
         </View>
+        </ScrollView>
     );
 };
 
@@ -93,7 +100,13 @@ const styles = StyleSheet.create({
     bioDescriptionText: {
         fontSize: 15
     },
-    settingsSection: {}
+    settingsSection: {
+        width: '100%',
+        paddingVertical: 20
+    },
+    settingsText: {
+        fontSize: 24,
+    }
 });
 
 export default ProfileScreen;
