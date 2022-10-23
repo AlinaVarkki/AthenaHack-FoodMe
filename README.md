@@ -65,3 +65,11 @@ communities on a local level
 
 <h2>Visuals</h2>
 <p>
+
+ <img src="Screenshot_1666555807.png" height=600>
+ <img src="Screenshot_1666555854.png" height=600>
+ <img src="Screenshot_1666555860.png" height=600>
+ 
+ <img src="Screenshot_1666556282.png" height=600>
+ <img src="Screenshot_1666555869.png" height=600>
+ <img src="Screenshot_1666555863.png" height=600>
