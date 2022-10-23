@@ -5,26 +5,11 @@ import NewStoryAdder from "./NewStoryAdder";
 import * as ImagePicker from "expo-image-picker";
 import {useNavigation} from "@react-navigation/native";
 
-const Stories = () => {
+const Stories = ({pictures}) => {
 
 
     const navigation = useNavigation();
-    const [photos, addPhoto] = useState(
-        [
-            {
-                id: 'photo1',
-                photo: require('../Resources/Squares/Boi5.png')
-
-            },{
-            id: 'photo2',
-
-            photo: require('../Resources/Squares/Boi1.png')
-
-        },{
-            id: 'photo3',
-            photo: require('../Resources/Squares/Boi2.png')
-        }]
-    );
+    const [photos, addPhoto] = useState(pictures);
 
     const [refresh, toggleRefresh] = useState(true);
 

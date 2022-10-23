@@ -7,12 +7,29 @@ import Stories from "../Components/Stories";
 import GetCookingObjects from "../Components/GetCookingObjects";
 
 const CommunityScreen = () => {
+
+
+  const photos =       [
+    {
+        id: 'photo1',
+        photo: require('../Resources/Dining/foodpic.jpg')
+
+    },{
+    id: 'photo2',
+
+    photo: require('../Resources/Dining/peopleeating.jpg')
+
+},{
+    id: 'photo3',
+    photo: require('../Resources/Dining/womaneating.jpg')
+}];
+
   return (
     <View style={styles.container}>
         <Text style={styles.title}>Hello Slavka</Text>
 
         <Text style={styles.heading}>Get hungry</Text>
-        <Stories/>
+        <Stories pictures={photos}/>
         <Text style={styles.heading}>Get inspired</Text>
         <GetInspired/>
         <Text style={styles.heading}>Get cooking</Text>

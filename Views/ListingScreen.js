@@ -57,6 +57,18 @@ const ListingScreen = (props) => {
             />
     )
 
+    const photos =       [
+        {
+            id: 'photo1',
+            photo: require('../Resources/Dining/peopleeating.jpg')
+
+        },{
+        id: 'photo2',
+
+        photo: require('../Resources/Dining/guycooking.jpg')
+
+    }];
+
 
 
 
@@ -96,7 +108,7 @@ const ListingScreen = (props) => {
                     </View>
             <Text style={styles.subheading}>Update</Text>
 
-            <Stories/>
+            <Stories pictures={photos}/>
             <View style={{flexDirection: 'row',justifyContent: 'center'}}>
             <Pressable onPress={goBack} style={styles.button}>
                 <Text style={styles.buttonText}>Complete</Text>
