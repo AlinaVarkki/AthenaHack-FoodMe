@@ -9,9 +9,10 @@ import {
 import FOOD_OFFERS from './foodOffers';
 import React, {useEffect, useState} from "react";
 import FeedCard from "../Components/FeedCard";
+import FeedCardMap from "../Components/FeedCardMap";
 
 const {width} = Dimensions.get("window");
-const CARD_HEIGHT = 190;
+const CARD_HEIGHT = 200;
 const CARD_WIDTH = width * 0.92;
 
 export default function OffersMap() {
@@ -138,7 +139,7 @@ export default function OffersMap() {
                       renderItem={({marker, index}) => {
                           return (
                               <View style={styles.card}>
-                                  <FeedCard
+                                  <FeedCardMap
                                       title={markers[index].food}
                                       description={markers[index].description}
                                       filter={markers[index].filter}

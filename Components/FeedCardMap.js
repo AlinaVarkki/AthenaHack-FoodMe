@@ -19,7 +19,7 @@ import ListingScreen from '../Views/ListingScreen';
 import RoundProfileImage from "./RoundProfileImage";
 
 
-const FeedCard = ({title, description, filter, distance, host, previewImage, people = [], highlight}) => {
+const FeedCardMap = ({title, description, filter, distance, host, previewImage, people=[], highlight}) => {
 
     const [buttonText, setButtonText] = useState(highlight ? "LEAVE" : "JOIN");
 
@@ -27,7 +27,7 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
     const [backgroundColor, setBackgroundColor] = useState(highlight ? ColorPalette.lightOrange : ColorPalette.white);
     const [textColor, setTextColor] = useState(highlight ? ColorPalette.offwhite : ColorPalette.darkness);
     const [buttonEnabled, setButtonEnabled] = useState(true);
-    const [animationShown, setAnimationShown] = useState(false);
+    const [animationActive,setAnimationActive] = useState(false);
 
     const navigation = useNavigation();
 
@@ -43,7 +43,7 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
             setButtonText("JOIN")
         }
 
-        if (people.length === 0) {
+        if (people.length===0) {
             setButtonText('JOIN')
         } else {
             if (people.length > 3) {
@@ -51,7 +51,7 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                 setButtonEnabled(false)
             }
             let set = new Set(people)
-            if (set.has(require(`../Resources/Avatars/Slavka.png`))) {
+            if(set.has(require(`../Resources/Avatars/Slavka.png`))) {
                 setButtonText('LEAVE')
                 setButtonEnabled(false)
             }
@@ -68,17 +68,12 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
     )
 
     const updateParticipant = () => {
-        setAnimationShown(true)
-        setTimeout(function () {
-            setAnimationShown(false)
-        }, 4000);
-
         let submission = {
             activityName: title,
             user: "Slavka"
         }
 
-        if (buttonText == "JOIN") {
+        if(buttonText == "JOIN") {
             people.push(require(`../Resources/Avatars/Slavka.png`))
             setParticipants(people)
             setButtonText("LEAVE")
@@ -113,42 +108,31 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
             description: description,
             filter: filter,
             distance: distance,
-            host: host,
-            previewImage: previewImage,
-            people: participants
+            host:host,
+            previewImage:previewImage,
+            people:participants
         })
     }
 
-    const showAnimation = () => {
+    if(animationActive) {
 
-    }
+    } else {
 
-    return (
-        <>
-            {!animationShown &&
-            <Pressable onPress={openListing}>
-                <View style={[{backgroundColor: backgroundColor}, styles.listing]}>
+        return (
+            <Pressable onPress={openListing} style={[{backgroundColor: backgroundColor}, styles.listing]}>
+                <View >
 
                     <View style={styles.content}>
                         <View style={styles.texts}>
-                            <View style={{
-                                flexDirection: 'row',
-                                justifyContent: 'space-between',
-                                alignItems: 'baseline'
-                            }}>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
                                 <Text style={[{color: textColor}, styles.title]}>{title}</Text>
 
                             </View>
-                            <View style={{
-                                flexDirection: 'row',
-                                justifyContent: 'space-between',
-                                alignItems: 'center'
-                            }}>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
                                 <Text style={styles.filter}>{filter}</Text>
                                 <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
-                                    <Icon name="location-sharp" size={18}
-                                          style={{color: highlight ? ColorPalette.offwhite : ColorPalette.orange}}/>
-                                    <Text style={[{color: textColor}, styles.location]}>{distance}km away</Text>
+                                    <Icon name="location-sharp" size={18} style={{color: highlight ? ColorPalette.offwhite : ColorPalette.orange}}/>
+                                    <Text style={[{color: textColor}, styles.location]}> {distance} away</Text>
                                 </View>
                             </View>
                             <Text style={[{color: textColor}, styles.textWhiteLower]}>{description}</Text>
@@ -159,25 +143,12 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                                 <Text style={[{color: textColor}, styles.host]}>by {host} </Text>
                                 <RoundProfileImage image={people[0]} size={25}/>
                             </View>
-                            <Image style={{height: width * 0.3, width: width * 0.4, marginTop: -5}}
-                                   source={previewImage}/>
+                            <Image style={{height: width * 0.33, width: width * 0.43, marginTop: -5}} source={previewImage}/>
                         </View>
 
                     </View>
 
                     <View style={styles.bottomPart}>
-
-                        {(people.length !== 0) &&
-                        <View style={styles.people}>
-                            <FlatList
-                                horizontal={true}
-                                data={people}
-                                keyExtractor={image => image.toString()}
-                                renderItem={profileRender}
-
-                            />
-                        </View>
-                        }
                         <View style={styles.button}>
                             <Pressable style={styles.joinButton} onPress={updateParticipant}>
                                 <Text style={styles.buttonText}>{buttonText}</Text>
@@ -185,19 +156,12 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                         </View>
                     </View>
                 </View>
-            </Pressable>}
-            {animationShown &&
-            <Pressable onPress={openListing}>
-                <View style={[{backgroundColor: ColorPalette.white}, styles.listing]}>
-                    <View style={{width: '100%', height: 150, justifyContent: 'center', alignItems: 'center'}}>
+            </Pressable>
 
-                        <Image style={{width: 190, height: 150}}
-                               source={{uri: "https://media2.giphy.com/media/Wqh906mKQ1rSBhi2z0/giphy.gif?cid=790b76117d37df51174cb34e36fa2dd79ca1cc4482317b9f&rid=giphy.gif&ct=g"}}/>
-                    </View>
-                </View>
-            </Pressable>}
-        </>
-    );
+        );
+
+    }
+
 }
 
 const {width} = Dimensions.get("screen");
@@ -210,58 +174,59 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         borderRadius: 30,
         flexWrap: 'nowrap',
-        justifyContent: 'space-between',
-        marginVertical: 15,
-        marginHorizontal: '5%',
+        justifyContent:'space-between',
+        marginVertical:15,
+        marginHorizontal:'5%',
         //     backgroundColor: ColorPalette.lightOrange,
         elevation: 10,
     },
-    content: {
+    content:{
         // justifyContent:'space-between'
-        alignItems: 'flex-end',
+        alignItems:'flex-end'
     },
-    texts: {
+    texts:{
         width: '55%',
-        alignSelf: 'flex-start',
+        alignSelf:'flex-start',
         paddingTop: 10,
         paddingLeft: 20,
         //  backgroundColor: 'green'
     },
-    image: {
-        height: width * 0.3,
-        width: width * 0.3,
-        position: 'absolute',
+    image:{
+        height: width*0.3,
+        width: width*0.3,
+        position:'absolute',
         //marginTop: -20,
         paddingRight: 20,
         paddingTop: 10,
-        paddingBottom: 5,
+        paddingBottom:5,
         //      backgroundColor:'red'
 
     },
-    bottomPart: {
+    bottomPart:{
         paddingBottom: 10,
         paddingHorizontal: 15,
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
+        justifyContent:'space-evenly',
+        alignItems:'center',
         width: '60%',
         //     backgroundColor:'blue'
     },
-    people: {
+    people:{
         //   flex: 1,
-        justifyContent: 'flex-start',
+        justifyContent:'flex-start',
         //       backgroundColor:'green',
         flexDirection: 'row',
         width: '66%',
-        marginRight: 5
+        marginRight:5
     },
-    button: {},
+    button:{
+    },
     title: {
         //     color: 'white',
         fontWeight: 'bold',
         fontSize: 22,
     },
-    filter: {
+    filter:{
         backgroundColor: ColorPalette.offwhite,
         fontWeight: 'bold',
         paddingVertical: 2,
@@ -274,7 +239,7 @@ const styles = StyleSheet.create({
         //      color: ColorPalette.offwhite,
 
     },
-    host: {
+    host:{
         //   fontWeight: 'bold',
         //     color: ColorPalette.offwhite,
         paddingRight: 5,
@@ -292,7 +257,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         borderRadius: 10,
         elevation: 5,
-        marginLeft: 20,
+        margin: 5,
     },
     buttonText: {
         color: '#FFAC00',
@@ -301,4 +266,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default FeedCard;
+export default FeedCardMap;

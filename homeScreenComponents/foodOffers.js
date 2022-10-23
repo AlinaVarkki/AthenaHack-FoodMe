@@ -12,29 +12,17 @@ let FOOD_OFFERS = [
         "longitude": 0.1454
     },
     {
-        "name":"Kathie",
-        "food":"Burrito",
-        "description":"My grandma's secret recipe.",
-        "filter":"gluten free",
-        "distance":"1.2",
-        "people":["Kathie","Radina", "Alina"],
-        "joined": false,
-        "previewImage": require('../Resources/Elements/Burrito.png'),
-        "latitude": 51.4805,
-        "longitude": 0.1430
-    },
-    {
         "name":"Alina",
         "food":"Taco Tuesday!",
         "description":"Best tacos in the town.",
         "filter":"vegetarian",
         "distance":"1",
         "people":["Alina"],
-        "joined": false,
-        "previewImage": require('../Resources/Elements/Taco.png'),
-        "latitude": 51.5010,
-        "longitude": 0.1730
-    },
+    "joined": false,
+    "previewImage": require('../Resources/Elements/Taco.png'),
+    "latitude": 51.5140,
+    "longitude": 0.1730
+},
     {
         "name":"Kathie",
         "food":"Tokoyakis",
@@ -58,6 +46,18 @@ let FOOD_OFFERS = [
         "previewImage": require('../Resources/Elements/sushinew.png'),
         "latitude": 51.5030,
         "longitude": 0.1730
+    },
+    {
+        "name":"Kathie",
+        "food":"Burrito",
+        "description":"My grandma's secret recipe.",
+        "filter":"gluten free",
+        "distance":"1.2",
+        "people":["Kathie","Radina", "Alina"],
+        "joined": false,
+        "previewImage": require('../Resources/Elements/Burrito.png'),
+        "latitude": 51.4805,
+        "longitude": 0.1430
     }
 ];
 
