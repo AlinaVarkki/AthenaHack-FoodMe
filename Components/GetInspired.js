@@ -14,7 +14,7 @@ const GetInspired = () => {
                     <Text>Kathie made 12 meals</Text>
                 </View>
             </View>
-            <Icon name="heart" size={30} color={ColorPalette.darkness}/>
+            <Icon name="heart" size={30} color={ColorPalette.orange}/>
         </View>
     )
 
@@ -28,13 +28,13 @@ const styles = StyleSheet.create({
     container: {
         width:'93%',
         backgroundColor: ColorPalette.white,
-        flexDirection: 'row', 
-        justifyContent: 'space-between', 
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
         borderRadius: 20,
         elevation: 5,
         padding:20
-    },    
+    },
     photo: {
         width: squareSize,
         height: squareSize,

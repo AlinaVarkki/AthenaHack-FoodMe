@@ -9,7 +9,9 @@ import ContributionSections from "./ContributionSections";
 
 const ImpactScreen = () => {
     return (
-        <ScrollView>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}>
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Text style={styles.helloText}>Hello Slavka</Text>

@@ -22,7 +22,11 @@ export default function OffersMap() {
     let _scrollView = React.createRef();
 
     const photos = [
-        require('../Resources/Elements/Pizza.png')
+        require('../Resources/Elements/burgernew.png'),
+        require('../Resources/Elements/Taco.png'),
+        require('../Resources/Elements/Tokoyaki.png'),
+        require('../Resources/Elements/sushinew.png'),
+        require('../Resources/Elements/Burrito.png'),
     ]
 
     useEffect(() => {
@@ -130,7 +134,7 @@ export default function OffersMap() {
                       pagingEnabled
                       scrollEventThrottle={1}
                       showsHorizontalScrollIndicator={false}
-                      snapToInterval={CARD_WIDTH + 20}
+                      snapToInterval={CARD_WIDTH + 10}
                       contentInset={styles.scrollViewContentInset}
                       contentContainerStyle={{
                           paddingHorizontal: 0
@@ -146,7 +150,7 @@ export default function OffersMap() {
                                       distance={markers[index].distance}
                                       host={markers[index].name}
                                       people={getImages(markers[index].people)}
-                                      previewImage={photos[0]}
+                                      previewImage={photos[index]}
                                   />
                               </View>
                           )

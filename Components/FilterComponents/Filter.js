@@ -30,6 +30,9 @@ export default function Filter() {
                 <Text style={styles.clearText}>Clear</Text>
             </View>
             {showAllFilterOptions()}
+            <View style={{width: '75%', height: 40, backgroundColor: ColorPalette.darkgrey, marginBottom: 45, borderRadius: 20, justifyContent: "center", alignItems: "center", alignSelf: 'center'}}>
+                <Text style={{color: ColorPalette.white}}>Apply</Text>
+            </View>
         </View>
     );
 }
@@ -44,7 +47,8 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 40,
         borderTopLeftRadius: 40,
         bottom: 0,
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+
     },
     topSection: {
         flexDirection: "row",
