@@ -9,6 +9,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@ideal-postcodes/postcode-lookup": "^1.11.0",
+    "@react-native-community/slider": "^4.3.2",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/stack": "^6.3.2",
     "expo": "~46.0.16",
@@ -18,7 +20,8 @@
     "react-native-maps": "0.31.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "react-native-vector-icons": "^9.2.0"
   },
   "private": true
 }

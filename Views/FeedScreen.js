@@ -1,16 +1,19 @@
 import React, {useState} from "react";
 
-import {StyleSheet, View} from "react-native";
+import {StyleSheet, TouchableWithoutFeedback, View} from "react-native";
 import ColorPalette from "../assets/ColorPalette";
 import OffersMap from "../homeScreenComponents/OffersMap";
 import MapView from "react-native-maps";
 import UpperMenuButton from "../Components/UpperMenuButton";
 
+import Icon from 'react-native-vector-icons/Ionicons';
 import Feeds from "../Components/Feeds";
+import Filter from "../Components/FilterComponents/Filter";
 
 
 const FeedScreen = () => {
     const [chosen, changeChosen] = useState("ListView");
+    const [filterShown, setFilterShown] = useState(false);
 
     const content = () => {
         switch (chosen) {
@@ -28,8 +31,20 @@ const FeedScreen = () => {
                                  color={chosen === "ListView" ? ColorPalette.orange : ColorPalette.darkgrey}/>
                 <UpperMenuButton name="home" text="Map" callback={() => changeChosen("MapView")}
                                  color={chosen === "MapView" ? ColorPalette.orange : ColorPalette.darkgrey}/>
+                <TouchableWithoutFeedback onPress={() => {
+                    console.log('heo')
+                    setFilterShown(!filterShown)
+                }}>
+                    <Icon name={'filter'} size={34} style={styles.filterIcon}
+                          color={filterShown ? ColorPalette.orange : ColorPalette.darkgrey}/>
+                </TouchableWithoutFeedback>
             </View>
             {content()}
+            {
+                filterShown ?
+                    <Filter></Filter>
+                    : <></>
+            }
         </>
     )
 
@@ -45,5 +60,10 @@ const styles = StyleSheet.create({
         borderTopColor: 'grey',
         flexDirection: 'row',
     },
+    filterIcon: {
+        position: 'absolute',
+        top: 9,
+        right: 20
+    }
 });
 export default FeedScreen;
