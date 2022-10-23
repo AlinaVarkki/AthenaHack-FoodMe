@@ -1,11 +1,14 @@
 import {StyleSheet, Text, View} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import Icon2 from "react-native-vector-icons/MaterialIcons";
-import React from "react";
+import React, {useState} from "react";
 import ColorPalette from "../../assets/ColorPalette";
 import Switch from "react-native/Libraries/Components/Switch/Switch";
 
 const SettingsItem = ({name, icon, showToggle = false}) => {
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
     return (
         <View style={styles.container}>
             <View style={styles.leftSection}>
@@ -17,6 +20,9 @@ const SettingsItem = ({name, icon, showToggle = false}) => {
                     showToggle ?
                         <Switch
                             thumbColor={ColorPalette.orange}
+                            trackColor={{ false: "#767577", true: ColorPalette.lightOrange }}
+                            onValueChange={toggleSwitch}
+                            value={isEnabled}
                         />
                         :
                         <Icon2 name={'arrow-forward-ios'} size={21} style={styles.arrowIcon}
