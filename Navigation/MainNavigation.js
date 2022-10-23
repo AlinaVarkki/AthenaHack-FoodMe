@@ -11,7 +11,10 @@ const Stack = createStackNavigator();
 const MainNavigation = () => (
 
     <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}>
             <Stack.Screen name="app name" component={MainScreen} initialParams={{screen:0}}/>
             {/* <Stack.Screen name="ProfileScreen" component={ProfileScreen}/>
             <Stack.Screen name="ImpactScreen" component={ImpactScreen}/> */}

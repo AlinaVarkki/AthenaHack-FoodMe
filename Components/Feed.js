@@ -69,7 +69,6 @@ const Feed = ({title, joined}) => {
                     keyExtractor={item => item.food}
                     renderItem={listingRender}
             />
-
         </View>
     );
 

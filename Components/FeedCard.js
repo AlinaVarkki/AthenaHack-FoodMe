@@ -121,7 +121,7 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                     </View>
 
                     <View style={styles.image}>
-                        <View style={{flexDirection: 'row', alignItems: 'center'}}> 
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Text style={[{color: textColor}, styles.host]}>by {host} </Text>
                             <RoundProfileImage image={people[0]} size={25}/>
                         </View>
@@ -143,16 +143,12 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                         />
                     </View>
                     }
-
-
                     <View style={styles.button}>
                         <Pressable style={styles.joinButton} onPress={updateParticipant}>
                             <Text style={styles.buttonText}>{buttonText}</Text>
                         </Pressable>
                     </View>
                 </View>
-
-
             </View>
 
         );

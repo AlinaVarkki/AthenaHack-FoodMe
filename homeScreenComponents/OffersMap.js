@@ -1,22 +1,31 @@
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import {StyleSheet, Text, View, Dimensions, Animated, Image, TouchableOpacity, Linking, ScrollView} from 'react-native';
+import {
+    StyleSheet,
+    View,
+    Dimensions,
+    Animated,
+    FlatList,
+} from 'react-native';
 import FOOD_OFFERS from './foodOffers';
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
+import FeedCard from "../Components/FeedCard";
 
 const {width} = Dimensions.get("window");
-const CARD_HEIGHT = 180;
-const CARD_WIDTH = width * 0.8;
+const CARD_HEIGHT = 190;
+const CARD_WIDTH = width * 0.92;
 
 export default function OffersMap() {
     const [markers, setMarkers] = useState([]);
-    const [identifiers, setIdentifiers] = useState();
 
     const mapRef = React.useRef();
     let _scrollView = React.createRef();
 
+    const photos = [
+        require('../Resources/Elements/Pizza.png')
+    ]
+
     useEffect(() => {
         const markersLoad = [];
-        const identifiersLoad = []
 
         for (let i = 0; i < FOOD_OFFERS.length; i++) {
             markersLoad.push({
@@ -24,14 +33,16 @@ export default function OffersMap() {
                     latitude: FOOD_OFFERS[i].latitude,
                     longitude: FOOD_OFFERS[i].longitude,
                 },
-                identifier: 'mk' + i,
                 name: FOOD_OFFERS[i].name,
+                food: FOOD_OFFERS[i].food,
+                description: FOOD_OFFERS[i].description,
+                people: FOOD_OFFERS[i].people,
+                filter: FOOD_OFFERS[i].filter,
+                distance: FOOD_OFFERS[i].distance,
                 photoReference: ''
             });
-            identifiersLoad.push('mk' + i)
         }
 
-        setIdentifiers(identifiersLoad);
         setMarkers(markersLoad);
     }, []);
 
@@ -49,10 +60,10 @@ export default function OffersMap() {
 
         mapRef.current?.animateToRegion({
             longitude: coordinates.longitude,
-            latitude: coordinates.latitude  - 0.006,
+            latitude: coordinates.latitude - 0.006,
             latitudeDelta: 0.02,
             longitudeDelta: 0.02,
-        }, 350)
+        }, 400)
     }
 
     const onMarkerPress = (mapEventData) => {
@@ -62,14 +73,22 @@ export default function OffersMap() {
 
         let x = (markerID * CARD_WIDTH) + (markerID * CARD_WIDTH);
 
-        _scrollView.current?.scrollTo({x: x, y: 0, animated: false});
+        _scrollView.current?.scrollTo({x: x, y: 0, animated: true});
     }
 
-
-    let mapStyle = [
-        { "elementType": "geometry", "stylers": [ { "color": "#f5f5f5" } ] },
-        { "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] }];
-
+    const getImages = (namesArr) => {
+        let images = []
+        console.log("Hey" + namesArr)
+        for (let i = 0; i < namesArr.length; i++) {
+            if (namesArr[i] === 'Alina') images.push(require(`../Resources/Avatars/Alina.png`))
+            if (namesArr[i] === 'Annie') images.push(require(`../Resources/Avatars/Annie.png`))
+            if (namesArr[i] === 'Kathie') images.push(require(`../Resources/Avatars/Kathie.png`))
+            if (namesArr[i] === 'Radina') images.push(require(`../Resources/Avatars/Radina.png`))
+            if (namesArr[i] === 'Slavka') images.push(require(`../Resources/Avatars/Slavka.png`))
+            if (namesArr[i] === 'Sophie') images.push(require(`../Resources/Avatars/Sophie.png`))
+        }
+        return images
+    }
 
     return (
         <>
@@ -78,18 +97,18 @@ export default function OffersMap() {
                 style={styles.map}
                 provider={PROVIDER_GOOGLE}
                 initialRegion={{
-                    latitude:51.4880,
-                    longitude:0.1500,
+                    latitude: 51.4880,
+                    longitude: 0.1500,
                     latitudeDelta: 0.08,
-                    longitudeDelta: 0.08,}}
+                    longitudeDelta: 0.08,
+                }}
             >
                 {markers?.map((marker, index) => (
                         <Marker
-                            title={'Marcador'}
+                            title={'`food`'}
                             key={index}
                             coordinate={marker.coordinates}
                             ref={marker => marker}
-                            identifier={marker.identifier}
                             onPress={(e) => onMarkerPress(e)}>
                             <Animated.View style={[styles.markerWrap]}>
                                 <Animated.Image
@@ -102,48 +121,35 @@ export default function OffersMap() {
                     )
                 )}
             </MapView>
-            <Animated.ScrollView
-                ref={_scrollView }
-                horizontal
-                pagingEnabled
-                scrollEventThrottle={1}
-                showsHorizontalScrollIndicator={false}
-                snapToInterval={CARD_WIDTH + 20}
-                snapToAlignment="center"
-                style={styles.scrollView}
-                contentInset={styles.scrollViewContentInset}
-                contentContainerStyle={{
-                    paddingHorizontal: 0
-                }}
-                onMomentumScrollEnd={(value) => moveCard(value.nativeEvent.contentOffset.x)}
-            >
-                {markers?.map((marker, index) => (
-                    <View style={styles.card} key={index}>
-                        <Image
-                            style={{width: '100%', height: '70%'}}
-                            source={{
-                                uri: "https://www.pandasecurity.com/en/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg",
-                            }}
-                        />
-                        <>
-                            <Text style={{
-                                fontSize: 19,
-                                paddingTop: 5,
-                                paddingLeft: 10,
-                                fontWeight: 'bold',
-                                color: 'white'
-                            }}>
-                                {marker.name}
-                            </Text>
-                            <TouchableOpacity style={{position: 'absolute', padding: 12, right: 0, bottom: 0}}
-                                              onPress={() => {
-                                                  Linking.openURL('geo:' + marker.coordinates.latitude + ',' + marker.coordinates.longitude + "?q=" + marker.name).then(r => console.log('lol', r))
-                                              }}>
-                            </TouchableOpacity>
-                        </>
-                    </View>
-                ))}
-            </Animated.ScrollView>
+            <FlatList ref={_scrollView}
+                      horizontal={true}
+                      snapToAlignment="center"
+                      style={styles.scrollView}
+                      data={markers}
+                      pagingEnabled
+                      scrollEventThrottle={1}
+                      showsHorizontalScrollIndicator={false}
+                      snapToInterval={CARD_WIDTH + 20}
+                      contentInset={styles.scrollViewContentInset}
+                      contentContainerStyle={{
+                          paddingHorizontal: 0
+                      }}
+                      onMomentumScrollEnd={(value) => moveCard(value.nativeEvent.contentOffset.x)}
+                      renderItem={({marker, index}) => {
+                          return (
+                              <View style={styles.card}>
+                                  <FeedCard
+                                      title={markers[index].food}
+                                      description={markers[index].description}
+                                      filter={markers[index].filter}
+                                      distance={markers[index].distance}
+                                      host={markers[index].name}
+                                      people={getImages(markers[index].people)}
+                                      previewImage={photos[0]}
+                                  />
+                              </View>
+                          )
+                      }}/>
         </>
     );
 }
@@ -164,9 +170,7 @@ const styles = StyleSheet.create({
         height: 40,
     },
     card: {
-        elevation: 2,
-        borderRadius: 8,
-        marginHorizontal: 8,
+        marginHorizontal: 1,
         color: 'white',
         height: CARD_HEIGHT,
         width: CARD_WIDTH,
