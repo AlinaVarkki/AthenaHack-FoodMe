@@ -6,12 +6,12 @@ import Slider from "@react-native-community/slider";
 
 export default function AllFilters() {
     const categories = [
-        {id: 0, name: "Amusement Park"},
-        {id: 2, name: "Church"},
-        {id: 3, name: "Art gallery"},
-        {id: 4, name: "City hall"},
-        {id: 6, name: "Library"},
-        {id: 8, name: "Museum"},
+        {id: 0, name: "Vegan"},
+        {id: 2, name: "Vegetarian"},
+        {id: 3, name: "Gluten Free"},
+        {id: 4, name: "Meat"},
+        {id: 6, name: "Huel"},
+        {id: 8, name: "Fish"},
     ];
 
     const [sliderValue, setSliderValue] = useState(1);

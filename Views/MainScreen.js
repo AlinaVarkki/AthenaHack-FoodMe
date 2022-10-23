@@ -32,10 +32,10 @@ const MainScreen = ({route}) => {
 
             case "ActionScreen":
                 return (<ActionScreen/>);
-                
-            case "ProfileScreen": 
+
+            case "ProfileScreen":
                 return (<ProfileScreen/>);
-                
+
             default:
                 return (<FeedScreen/>);
         }
@@ -65,7 +65,8 @@ const styles = StyleSheet.create({
     screen: {
         height: '100%',
         flex: 1,
-        paddingTop:10,
+        paddingTop: 10,
+        backgroundColor: ColorPalette.white
     },
     main: {
         height: '87.5%',

@@ -18,7 +18,7 @@ const Feed = ({title, joined}) => {
         filterList();
     }, []);
 
-    
+
     const photos = [
         require('../Resources/Elements/Pizza.png')
     ]
@@ -27,12 +27,12 @@ const Feed = ({title, joined}) => {
         let images = []
         console.log("Hey" + namesArr)
         for (let i = 0; i < namesArr.length; i++) {
-            if (namesArr[i] == 'Alina') images.push(require(`../Resources/Avatars/Alina.png`))
-            if (namesArr[i] == 'Annie') images.push(require(`../Resources/Avatars/Annie.png`))
-            if (namesArr[i] == 'Kathie') images.push(require(`../Resources/Avatars/Kathie.png`))
-            if (namesArr[i] == 'Radina') images.push(require(`../Resources/Avatars/Radina.png`))
-            if (namesArr[i] == 'Slavka') images.push(require(`../Resources/Avatars/Slavka.png`))
-            if (namesArr[i] == 'Sophie') images.push(require(`../Resources/Avatars/Sophie.png`))
+            if (namesArr[i] === 'Alina') images.push(require(`../Resources/Avatars/Alina.png`))
+            if (namesArr[i] === 'Annie') images.push(require(`../Resources/Avatars/Annie.png`))
+            if (namesArr[i] === 'Kathie') images.push(require(`../Resources/Avatars/Kathie.png`))
+            if (namesArr[i] === 'Radina') images.push(require(`../Resources/Avatars/Radina.png`))
+            if (namesArr[i] === 'Slavka') images.push(require(`../Resources/Avatars/Slavka.png`))
+            if (namesArr[i] === 'Sophie') images.push(require(`../Resources/Avatars/Sophie.png`))
         }
         return images
     }
