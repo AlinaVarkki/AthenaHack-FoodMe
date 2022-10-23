@@ -107,7 +107,8 @@ const Stories = ({pictures}) => {
                 renderItem={renderStory}
                 keyExtractor={item => item.id}
                 horizontal={true}
-
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
             />
 
 

@@ -8,7 +8,9 @@ import SettingsItem from "../Components/ProfileScreenComponents/SettingsItem";
 
 const ProfileScreen = () => {
     return (
-        <ScrollView>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}>
         <View style={styles.container}>
             <View style={styles.photoNameSection}>
                 <Image style={styles.profileImage} source={require(`../Resources/Avatars/Slavka.png`)}/>

@@ -1,13 +1,16 @@
 import React from 'react';
-import {StyleSheet, Image, View,Dimensions} from 'react-native';
+import {StyleSheet, Image, View, Dimensions, TouchableWithoutFeedback, Linking} from 'react-native';
 
 const GetCookingObjects = ({image}) => {
 
     return (
+        <TouchableWithoutFeedback onPress={() => {
+            Linking.openURL("https://www.bbcgoodfood.com/recipes/creamy-tomato-risotto");
+        }}>
         <View style={styles.box}>
             <Image source={image} style={styles.image}/>
-
         </View>
+        </TouchableWithoutFeedback>
     );
 }
 
@@ -17,7 +20,7 @@ const {width} = Dimensions.get("screen");
 const styles = StyleSheet.create({
     box: {
         width: width*0.6,
-        height: width*0.4, 
+        height: width*0.4,
         resizeMode:'stretch',
         borderRadius: 20,
         margin: 7.5,
@@ -28,9 +31,9 @@ const styles = StyleSheet.create({
 
     },
     image: {
-        borderRadius: 15, 
+        borderRadius: 15,
         width: width*0.6,
-        height: width*0.4, 
+        height: width*0.4,
     }
 });
 

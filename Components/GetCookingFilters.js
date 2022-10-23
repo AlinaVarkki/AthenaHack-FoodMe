@@ -7,14 +7,14 @@ import GetCookingFilter from './GetCookingFilter';
 const GetCookingFilters = () => {
 
     const filters = [
-        {name: "vegan", selected: true}, 
-        {name: "vegetarian", selected: false}, 
-        {name: "pescaterian", selected: false}, 
-        {name: "dairy-free", selected: false}, 
+        {name: "vegan", selected: true},
+        {name: "vegetarian", selected: false},
+        {name: "pescaterian", selected: false},
+        {name: "dairy-free", selected: false},
         {name: "gluten-free", selected: false}];
 
     const renderFilter = ({item}) => {
-        return (<GetCookingFilter 
+        return (<GetCookingFilter
             name={item.name}
             selected={item.selected}
         />)
@@ -22,11 +22,13 @@ const GetCookingFilters = () => {
 
     return (
         <View style={styles.container}>
-            <FlatList 
+            <FlatList
                 data={filters}
                 renderItem={renderFilter}
                 keyExtractor={item => item.name}
                 horizontal={true}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
             />
         </View>
     );
@@ -35,7 +37,7 @@ const GetCookingFilters = () => {
 
 const styles = StyleSheet.create({
     container: {
-  
+
     }
 });
 

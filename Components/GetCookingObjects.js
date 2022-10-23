@@ -14,7 +14,7 @@ const GetCookingObjects = () => {
     ]
 
     const renderPreview = ({item}) => {
-        return (<GetCookingObject 
+        return (<GetCookingObject
             image={item.photo}
         />)
     }
@@ -26,6 +26,8 @@ const GetCookingObjects = () => {
                 renderItem={renderPreview}
                 keyExtractor={item => item.id}
                 horizontal={true}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
             />
         </View>
     );
@@ -33,7 +35,7 @@ const GetCookingObjects = () => {
 };
 
 const styles = StyleSheet.create({
-    
+
 });
 
 export default GetCookingObjects;
