@@ -2,6 +2,7 @@ import React from "react";
 
 import {StyleSheet, View, Text, Image} from "react-native";
 import ColorPalette from "../assets/ColorPalette";
+import Icon from "react-native-vector-icons/Feather";
 
 
 const ProfileScreen = () => {
@@ -13,6 +14,20 @@ const ProfileScreen = () => {
                     <Text style={styles.nameText}>Slavka Borovska</Text>
                     <Text style={styles.usernameText}>@slavkabo</Text>
                 </View>
+            </View>
+            <View style={styles.bioSection}>
+                <View style={styles.bioTitleEditSection}>
+                    <Text style={styles.bioText}>Bio</Text>
+                    <Icon name="edit-2" size={18} style={styles.editIcon}/>
+                </View>
+                <Text style={styles.bioDescriptionText}>
+                    A zero-waste enthusiast and an active cyclist.
+                    On the weekends, you can find me in the mountains,
+                    Most proud of: stopped travelling by plane ✈️🚫️
+                </Text>
+            </View>
+            <View style={styles.settingsSection}>
+
             </View>
         </View>
     );
@@ -30,7 +45,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         width: '100%',
-        justifyContent: 'space-between'
+        maxHeight: 120,
+        justifyContent: 'space-between',
     },
     profileImage: {
         height: 110,
@@ -38,7 +54,7 @@ const styles = StyleSheet.create({
         borderRadius: 30
     },
     nameUsernameSection: {
-        margin: 23
+        justifyContent: 'center'
     },
     nameText: {
         fontWeight: 'bold',
@@ -47,7 +63,37 @@ const styles = StyleSheet.create({
     usernameText: {
         fontSize: 22,
         color: ColorPalette.orange
-    }
+    },
+    bioSection: {
+        borderRadius: 10,
+        paddingVertical: 16,
+        paddingHorizontal: 9,
+        marginVertical: 15,
+        marginHorizontal: -10,
+        shadowColor: 'black',
+        shadowOpacity: 0.26,
+        shadowOffset: {width: 2, height: 4},
+        shadowRadius: 10,
+        elevation: 4,
+        backgroundColor: 'white'
+    },
+    bioTitleEditSection: {
+        flexDirection: "row",
+        justifyContent: 'space-between'
+    },
+    editIcon: {
+        color: ColorPalette.orange,
+        marginHorizontal: 8
+    },
+    bioText: {
+        fontSize: 17,
+        fontWeight: "500",
+        marginVertical: 5
+    },
+    bioDescriptionText: {
+        fontSize: 15
+    },
+    settingsSection: {}
 });
 
 export default ProfileScreen;
