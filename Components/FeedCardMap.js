@@ -128,11 +128,11 @@ const FeedCardMap = ({title, description, filter, distance, host, previewImage, 
                                 <Text style={[{color: textColor}, styles.title]}>{title}</Text>
 
                             </View>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                                 <Text style={styles.filter}>{filter}</Text>
                                 <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
                                     <Icon name="location-sharp" size={18} style={{color: highlight ? ColorPalette.offwhite : ColorPalette.orange}}/>
-                                    <Text style={[{color: textColor}, styles.location]}> {distance} away</Text>
+                                    <Text style={[{color: textColor}, styles.location]}> {distance}km away</Text>
                                 </View>
                             </View>
                             <Text style={[{color: textColor}, styles.textWhiteLower]}>{description}</Text>
@@ -227,11 +227,11 @@ const styles = StyleSheet.create({
         fontSize: 22,
     },
     filter:{
-        backgroundColor: ColorPalette.offwhite,
+        backgroundColor: ColorPalette.orange,
         fontWeight: 'bold',
         paddingVertical: 2,
         paddingHorizontal: 10,
-        color: ColorPalette.lightOrange,
+        color: ColorPalette.offwhite,
         borderRadius: 5,
         fontSize: 13
     },

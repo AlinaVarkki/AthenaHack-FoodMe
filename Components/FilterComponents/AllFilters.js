@@ -10,7 +10,7 @@ export default function AllFilters() {
         {id: 2, name: "Vegetarian"},
         {id: 3, name: "Gluten Free"},
         {id: 4, name: "Meat"},
-        {id: 6, name: "Huel"},
+        {id: 6, name: "Dairy Free"},
         {id: 8, name: "Fish"},
     ];
 
