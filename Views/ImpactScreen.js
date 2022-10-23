@@ -4,6 +4,7 @@ import {View, Text, StyleSheet, ScrollView, Image} from "react-native";
 import ColorPalette from "../assets/ColorPalette";
 import YourImpactSection from "./YourImpactSection";
 import YourBadgesSection from "./YourBadgesSection";
+import ContributionSections from "./ContributionSections";
 
 
 const ImpactScreen = () => {
@@ -38,6 +39,7 @@ const ImpactScreen = () => {
                 </View>
                 <YourBadgesSection/>
                 <YourImpactSection/>
+                <ContributionSections/>
             </View>
         </ScrollView>
     );
