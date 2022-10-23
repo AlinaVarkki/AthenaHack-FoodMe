@@ -1,12 +1,24 @@
 import React from "react";
 
 import { StyleSheet, View, Text } from "react-native";
-
+import GetCookingFilters from "../Components/GetCookingFilters";
+import GetInspired from "../Components/GetInspired";
+import Stories from "../Components/Stories";
+import GetCookingObjects from "../Components/GetCookingObjects";
 
 const CommunityScreen = () => {
-    return (
+  return (
     <View style={styles.container}>
-        <Text>community</Text>
+        <Text style={styles.title}>Hello Slavka</Text>
+
+        <Text style={styles.heading}>Get hungry</Text>
+        <Stories/>
+        <Text style={styles.heading}>Get inspired</Text>
+        <GetInspired/>
+        <Text style={styles.heading}>Get cooking</Text>
+        <GetCookingFilters/>
+        <GetCookingObjects/>
+
       </View>
       );
 };
@@ -15,10 +27,22 @@ const CommunityScreen = () => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+      paddingLeft: '7%',
     },
+    title: {
+      fontSize: 35,
+      paddingTop: 8,
+      marginTop:3,
+      paddingBottom:10
+    },
+    heading: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      paddingTop: 8,
+      marginTop:3,
+      paddingVertical:7
+    }
   });
+
 
 export default CommunityScreen;
