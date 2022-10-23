@@ -10,6 +10,7 @@ export default {
     darkGreen: '#007142',
     lightOrange: '#FFAE66',
     darkness: '#0B0B18',
-    lightGrey: '#dedede'
+    lightGrey: '#dedede',
+    grey: '#b7b7b7'
 
 };

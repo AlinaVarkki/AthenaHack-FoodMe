@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import FeedAction from './FeedAction';
 import {StyleSheet, View, FlatList, Text} from 'react-native';
 
@@ -6,6 +6,8 @@ import ColorPalette from "../assets/ColorPalette";
 
 
 const FeedsAction = ({hosted}) => {
+
+    const [newListingShown, setNewListingShown] = useState(false);
 
     const hostedList = [
         {title: "You are the chef", hosted: true, inProgress: true},
@@ -29,7 +31,7 @@ const FeedsAction = ({hosted}) => {
             {hosted &&
                 <View style={styles.addButton}>
                     <Text style={styles.addButtonText}>ADD +</Text>
-                </View> 
+                </View>
             }
             <FlatList showsVerticalScrollIndicator={false}
                     data={hosted ? hostedList : attendedList}
@@ -50,12 +52,11 @@ const styles = StyleSheet.create({
     },
     addButton: {
         width: '100%',
-        justifyContent: 'space-around',
-        flexDirection: 'row', 
+        flexDirection: 'row',
         justifyContent: 'flex-end',
         position:'absolute',
 
-    }, 
+    },
     addButtonText: {
         backgroundColor: ColorPalette.orange,
         color: ColorPalette.offwhite,
