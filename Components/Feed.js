@@ -54,7 +54,7 @@ const Feed = ({title, joined}) => {
             filter={item.filter}
             distance={item.distance}
             host={item.name}
-            previewImage={photos[0]}
+            previewImage={item.previewImage}
             people={getImages(item.people)}
             highlight={joined}
         />

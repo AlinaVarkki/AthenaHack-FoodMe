@@ -73,7 +73,7 @@ const FeedAction = ({title, hosted, inProgress}) => {
             filter={item.filter}
             distance={item.distance}
             host={item.name}
-            previewImage={photos[0]}
+            previewImage={item.previewImage}
             people={getImages(item.people)}
             hosted={hosted}
             inProgress={inProgress}

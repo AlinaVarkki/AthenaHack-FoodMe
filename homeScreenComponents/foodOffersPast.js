@@ -4,31 +4,34 @@ let FOOD_OFFERS = [
         "food":"Pizza night!",
         "description":"Homemade pizzas with your favourite toppings!",
         "filter":"vegetarian",
-        "distance":"0.9",
+        "distance":"1",
         "people": ["Radina","Sophie", "Slavka"],
         "joined": true,
+        "previewImage": require('../Resources/Elements/Pizza.png'),
         "latitude": 51.5200,
         "longitude": 0.1454
     },
     {
         "name":"Sophie",
-        "food":"Pancakes",
-        "description":"Stop by for some banana pancakes :)",
+        "food":"Donuts",
+        "description":"Yes, I do make these myself!",
         "filter":"vegan",
         "distance":"0.1",
         "people":["Sophie","Alina"],
         "joined": false,
+        "previewImage": require('../Resources/Elements/donutnew.png'),
         "latitude": 51.5010,
         "longitude": 0.1730
     },
     {
         "name":"Slavka",
-        "food":"Grilled cheese",
+        "food":"Pizza",
         "description":"A secret mix of four cheeses guaranteed to steal your heart.",
         "filter":"vegan",
         "distance":"0.33",
         "people":["Slavka","Annie", "Kathie", "Radina"],
         "joined": false,
+        "previewImage": require('../Resources/Elements/Pizza.png'),
         "latitude": 51.5030,
         "longitude": 0.1730
     }

@@ -48,7 +48,7 @@ const FeedCardAction = ({title, description, filter, distance, host, previewImag
                             {!hosted &&
                             <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
                                 <Icon name="location" size={18} style={{color: ColorPalette.orange}}/>
-                                <Text style={[{color: textColor}, styles.location]}> {distance} away</Text>
+                                <Text style={[{color: textColor}, styles.location]}>{distance}km away</Text>
                             </View> }
                         </View>
                         {!hosted &&

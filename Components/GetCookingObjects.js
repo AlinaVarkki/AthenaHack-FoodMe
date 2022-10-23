@@ -5,12 +5,12 @@ import GetCookingObject from "./GetCookingObject";
 const GetCookingObjects = () => {
 
     const previews = [
-        {id: 1, photo: require('../Resources/Squares/Boi1.png')},
-        {id: 2, photo: require('../Resources/Squares/Boi2.png')},
-        {id: 4, photo: require('../Resources/Squares/Boi4.png')},
-        {id: 5, photo: require('../Resources/Squares/Boi5.png')},
-        {id: 6, photo: require('../Resources/Squares/Boi6.png')},
-        {id: 7, photo: require('../Resources/Squares/Boi7.png')},
+        {id: 1, photo: require('../Resources/Recipes/recipe1.png')},
+        {id: 4, photo: require('../Resources/Recipes/recipe3.png')},
+        {id: 5, photo: require('../Resources/Recipes/recipe4.png')},
+        {id: 6, photo: require('../Resources/Recipes/recipe5.png')},
+        {id: 7, photo: require('../Resources/Recipes/recipe6.png')},
+        {id: 2, photo: require('../Resources/Recipes/recipe2.png')},
     ]
 
     const renderPreview = ({item}) => {

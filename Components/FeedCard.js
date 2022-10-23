@@ -128,11 +128,11 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                             <Text style={[{color: textColor}, styles.title]}>{title}</Text>
 
                         </View>
-                        <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                             <Text style={styles.filter}>{filter}</Text>
                             <View style={{flexDirection: 'row', alignItems: 'baseline'}}>
                                 <Icon name="location-sharp" size={18} style={{color: highlight ? ColorPalette.offwhite : ColorPalette.orange}}/>
-                                <Text style={[{color: textColor}, styles.location]}> {distance} away</Text>
+                                <Text style={[{color: textColor}, styles.location]}>{distance}km away</Text>
                             </View>
                         </View>
                         <Text style={[{color: textColor}, styles.textWhiteLower]}>{description}</Text>
@@ -143,7 +143,7 @@ const FeedCard = ({title, description, filter, distance, host, previewImage, peo
                             <Text style={[{color: textColor}, styles.host]}>by {host} </Text>
                             <RoundProfileImage image={people[0]} size={25}/>
                         </View>
-                        <Image style={{height: width * 0.33, width: width * 0.43, marginTop: -5}} source={previewImage}/>
+                        <Image style={{height: width * 0.3, width: width * 0.4, marginTop: -5}} source={previewImage}/>
                     </View>
 
                 </View>
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     },
     content:{
         // justifyContent:'space-between'
-        alignItems:'flex-end'
+        alignItems:'flex-end',
     },
     texts:{
         width: '55%',
